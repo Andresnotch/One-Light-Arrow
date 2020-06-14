@@ -16,7 +16,16 @@ _global_script_class_icons={
 [application]
 
 config/name="One Light Arrow"
+run/main_scene="res://Scenes/Test Map.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+mouse_cursor/custom_image="res://Sprites/Arrow/crosshair.png"
+
+[physics]
+
+2d/default_gravity_vector=Vector2( 0, 0 )
 
 [rendering]
 

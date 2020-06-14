@@ -7,6 +7,8 @@
 texture = ExtResource( 1 )
 shadow_enabled = true
 shadow_color = Color( 1, 1, 1, 0 )
+shadow_filter = 3
+shadow_filter_smooth = 3.5
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )

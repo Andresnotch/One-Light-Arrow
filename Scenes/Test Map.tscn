@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Player/Arrow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=2]
-
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.502994 )
@@ -17,19 +17,20 @@ gradient = SubResource( 1 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 126.35, 178.244 )
-scale = Vector2( 1, 332.217 )
+position = Vector2( 512, 300 )
+scale = Vector2( 0.5, 600 )
 texture = SubResource( 2 )
 
 [node name="Node2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96.9588, 160.446 )
+position = Vector2( 318.576, 306.32 )
 texture_scale = 1.44
 energy = 0.83
-shadow_filter = 3
-shadow_filter_smooth = 3.5
 
 [node name="Box1" parent="." instance=ExtResource( 2 )]
-position = Vector2( 37.4469, 64.2218 )
+position = Vector2( 531.665, 167.821 )
 
 [node name="Box2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 191.491, 75.5153 )
+position = Vector2( 316.548, 167.687 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 276.493, 316.414 )

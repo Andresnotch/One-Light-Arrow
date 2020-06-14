@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Boxes/EDKQOeLW4AABb7_.png" type="Texture" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+closed = false
+cull_mode = 1
+polygon = PoolVector2Array( -22.5472, -22.4993, 22.4818, -22.4175, 22.5005, 22.5162, -22.515, 22.4775, -22.515, -22.4671 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 240, 48, 48, 48 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 1 )

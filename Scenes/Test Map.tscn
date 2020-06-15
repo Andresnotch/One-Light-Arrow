@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Player/Arrow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Enemies/Gloom.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0.502994 )
@@ -14,7 +15,7 @@ gradient = SubResource( 1 )
 [node name="Mapa" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 
 [node name="Entidades" type="YSort" parent="."]
 position = Vector2( -1, 0 )
@@ -31,8 +32,12 @@ position = Vector2( 316.548, 167.687 )
 
 [node name="Player" parent="Entidades" instance=ExtResource( 3 )]
 position = Vector2( 284.193, 286.64 )
+scale = Vector2( 2, 2 )
+
+[node name="Node2D" parent="Entidades" instance=ExtResource( 4 )]
+position = Vector2( 407.001, 276.001 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 514, 300 )
+position = Vector2( 513.46, 300 )
 scale = Vector2( 0.5, 600 )
 texture = SubResource( 2 )

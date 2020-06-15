@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # Member variables
-const MOTION_SPEED = 100 # Pixels/second
+const MOTION_SPEED = 200 # Pixels/second
 
 
 func _physics_process(_delta):

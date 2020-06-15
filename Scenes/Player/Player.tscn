@@ -53,4 +53,7 @@ texture = ExtResource( 3 )
 texture_scale = 1.44
 energy = 0.83
 shadow_enabled = true
+shadow_color = Color( 1, 1, 1, 0 )
+shadow_filter = 3
+shadow_filter_smooth = 3.5
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

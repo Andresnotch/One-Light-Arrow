@@ -16,21 +16,23 @@ gradient = SubResource( 1 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 512, 300 )
-scale = Vector2( 0.5, 600 )
-texture = SubResource( 2 )
+[node name="Entidades" type="YSort" parent="."]
+position = Vector2( -1, 0 )
+z_index = 1
 
-[node name="Node2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 318.576, 306.32 )
-texture_scale = 1.44
-energy = 0.83
+[node name="Arrow" parent="Entidades" instance=ExtResource( 1 )]
+position = Vector2( 420.885, 232.696 )
 
-[node name="Box1" parent="." instance=ExtResource( 2 )]
+[node name="Box1" parent="Entidades" instance=ExtResource( 2 )]
 position = Vector2( 531.665, 167.821 )
 
-[node name="Box2" parent="." instance=ExtResource( 2 )]
+[node name="Box2" parent="Entidades" instance=ExtResource( 2 )]
 position = Vector2( 316.548, 167.687 )
 
-[node name="Node2D2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 276.493, 316.414 )
+[node name="Player" parent="Entidades" instance=ExtResource( 3 )]
+position = Vector2( 284.193, 286.64 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 514, 300 )
+scale = Vector2( 0.5, 600 )
+texture = SubResource( 2 )

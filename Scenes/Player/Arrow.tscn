@@ -1,14 +1,32 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Sprites/Light/glow-png-black-and-white-white-glow-png-800.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Arrow/Arrow.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/Arrow.gd" type="Script" id=3]
 
-[node name="Node2D" type="Light2D"]
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.69976
+height = 6.70804
+
+[node name="Light" type="Light2D"]
 texture = ExtResource( 1 )
+texture_scale = 1.44
+energy = 0.83
 shadow_enabled = true
 shadow_color = Color( 1, 1, 1, 0 )
 shadow_filter = 3
 shadow_filter_smooth = 3.5
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

@@ -1,10 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprites/Animations/Player/Idle/Front/Idle Player Frame 1 (front).png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Animations/Player/Idle/Front/Idle Player Frame 2 (front).png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Light/glow-png-black-and-white-white-glow-png-800.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.96193, 5.00754 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 24.1578
+
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [  ],
 "loop": true,
@@ -17,16 +24,27 @@ animations = [ {
 "speed": 1.0
 } ]
 
-[node name="Node2D" type="Area2D"]
-gravity_vec = Vector2( 0, 0 )
+[node name="Node2D" type="KinematicBody2D"]
+script = ExtResource( 4 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -4.70822, 12.4243, 3.50812, 12.3647, 3.62719, 3.43392, -4.64868, 3.49346 )
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+input_pickable = false
+gravity_vec = Vector2( 0, 0 )
+gravity = 0.0
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 animation = "PlayerFrontIdle"
-frame = 1
+playing = true
 
 [node name="Light2D" type="Light2D" parent="."]
 visible = false
@@ -35,3 +53,4 @@ texture = ExtResource( 3 )
 texture_scale = 1.44
 energy = 0.83
 shadow_enabled = true
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

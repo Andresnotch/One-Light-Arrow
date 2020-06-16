@@ -1,4 +1,4 @@
-extends Light2D
+extends RigidBody2D
 
 
 # Declare member variables here. Examples:
@@ -10,15 +10,14 @@ extends Light2D
 func _ready():
 	pass # Replace with function body.
 
-func changevis():
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var oculto
-	pass
+#func _process(delta):
+#	pass
 
 
-func _on_Area2D_area_entered(area):
+
+func _on_Area2D_area_entered(_area):
+	print("arrow")
 	queue_free()
-	pass
+	pass # Replace with function body.

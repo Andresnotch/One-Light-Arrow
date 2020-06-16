@@ -23,6 +23,8 @@ config/icon="res://icon.png"
 
 mouse_cursor/custom_image="res://Sprites/Arrow/newcrosshair.png"
 mouse_cursor/tooltip_position_offset=Vector2( 5, 5 )
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [input]
 
@@ -47,10 +49,19 @@ d={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_1="Background"
+2d_render/layer_2="Map"
+2d_render/layer_3="Player"
+2d_render/layer_4="Enemies"
+
 [physics]
 
 2d/default_gravity=0
 2d/default_gravity_vector=Vector2( 0, 0 )
+2d/default_linear_damp=10.0
+2d/default_angular_damp=5.0
 
 [rendering]
 

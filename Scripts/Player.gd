@@ -22,6 +22,8 @@ func _physics_process(_delta):
 
 
 
-func _on_Area2D_area_entered(area):
-	$Light2D.visible = true
+func _on_Area2D_area_entered(_area):
+	print("player")
+	$ArrowLight.visible = true
+	$Shadow.visible = false
 	pass

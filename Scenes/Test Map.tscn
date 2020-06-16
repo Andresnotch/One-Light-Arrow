@@ -15,29 +15,34 @@ gradient = SubResource( 1 )
 [node name="Mapa" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+color = Color( 0.027451, 0.027451, 0.027451, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 513.46, 300 )
+scale = Vector2( 0.5, 600 )
+texture = SubResource( 2 )
 
 [node name="Entidades" type="YSort" parent="."]
 position = Vector2( -1, 0 )
 z_index = 1
 
 [node name="Arrow" parent="Entidades" instance=ExtResource( 1 )]
-position = Vector2( 420.885, 232.696 )
+position = Vector2( 367.059, 234.427 )
+
+[node name="Box5" parent="Entidades" instance=ExtResource( 2 )]
+position = Vector2( 296.869, 199.864 )
+
+[node name="Box6" parent="Entidades" instance=ExtResource( 2 )]
+position = Vector2( 254.639, 159.306 )
+
+[node name="Box4" parent="Entidades" instance=ExtResource( 2 )]
+position = Vector2( 383.283, 169.74 )
 
 [node name="Box1" parent="Entidades" instance=ExtResource( 2 )]
-position = Vector2( 531.665, 167.821 )
-
-[node name="Box2" parent="Entidades" instance=ExtResource( 2 )]
-position = Vector2( 316.548, 167.687 )
+position = Vector2( 385.006, 280.876 )
 
 [node name="Player" parent="Entidades" instance=ExtResource( 3 )]
-position = Vector2( 284.193, 286.64 )
-scale = Vector2( 2, 2 )
+position = Vector2( 407.112, 222.721 )
 
-[node name="Node2D" parent="Entidades" instance=ExtResource( 4 )]
-position = Vector2( 407.001, 276.001 )
-
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 513.46, 300 )
-scale = Vector2( 0.5, 600 )
-texture = SubResource( 2 )
+[node name="Gloom1" parent="Entidades" instance=ExtResource( 4 )]
+position = Vector2( 295.772, 304.65 )

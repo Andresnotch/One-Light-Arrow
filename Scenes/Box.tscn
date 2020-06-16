@@ -5,21 +5,26 @@
 [sub_resource type="OccluderPolygon2D" id=1]
 closed = false
 cull_mode = 1
-polygon = PoolVector2Array( -22.5472, -22.4993, 22.4818, -22.4175, 22.5005, 22.5162, -22.515, 22.4775, -22.515, -22.4671 )
+polygon = PoolVector2Array( -22.4661, -10.8484, 22.4821, -10.6762, 22.5005, 22.5162, -22.515, 22.4775, -22.4661, -10.9946, 22.489, -10.6291 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24.0171, 17.8746 )
 
 [node name="Node2D" type="StaticBody2D"]
+light_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 2
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 240, 48, 48, 48 )
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 29
 occluder = SubResource( 1 )
+light_mask = 29
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 16
 position = Vector2( 0, 6.1687 )
 shape = SubResource( 2 )

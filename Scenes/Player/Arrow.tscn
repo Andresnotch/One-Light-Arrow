@@ -1,32 +1,39 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Sprites/Light/glow-png-black-and-white-white-glow-png-800.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Light/ArrowLight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Arrow/Arrow.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Player/Arrow.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Arrow.gd" type="Script" id=3]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.9
+
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 3.69976
 height = 6.70804
 
-[node name="Light" type="Light2D"]
-texture = ExtResource( 1 )
-texture_scale = 1.44
-energy = 0.83
-shadow_enabled = true
-shadow_color = Color( 1, 1, 1, 0 )
-shadow_filter = 3
-shadow_filter_smooth = 3.5
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 2.53843
+height = 16.3569
+
+[node name="RigidBody2D" type="RigidBody2D"]
+physics_material_override = SubResource( 1 )
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -0.122087 )
 texture = ExtResource( 2 )
 
+[node name="Light" parent="." instance=ExtResource( 1 )]
+position = Vector2( -0.524483, -0.349655 )
+
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0, -0.122087 )
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
-collision_layer = 2
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

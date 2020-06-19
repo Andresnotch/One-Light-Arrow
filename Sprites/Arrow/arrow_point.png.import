@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Arrow.png-d59e893476a48f8c9f428864f2c52a42.stex"
+path="res://.import/arrow_point.png-a7575c2dea0e90231f1e589f15e86c40.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Arrow/Arrow.png"
-dest_files=[ "res://.import/Arrow.png-d59e893476a48f8c9f428864f2c52a42.stex" ]
+source_file="res://Sprites/Arrow/arrow_point.png"
+dest_files=[ "res://.import/arrow_point.png-a7575c2dea0e90231f1e589f15e86c40.stex" ]
 
 [params]
 

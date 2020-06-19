@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Player/Arrow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Box.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Enemies/Gloom.tscn" type="PackedScene" id=4]
@@ -26,9 +25,6 @@ texture = SubResource( 2 )
 position = Vector2( -1, 0 )
 z_index = 1
 
-[node name="Arrow" parent="Entidades" instance=ExtResource( 1 )]
-position = Vector2( 367.059, 234.427 )
-
 [node name="Box5" parent="Entidades" instance=ExtResource( 2 )]
 position = Vector2( 296.869, 199.864 )
 
@@ -36,13 +32,19 @@ position = Vector2( 296.869, 199.864 )
 position = Vector2( 254.639, 159.306 )
 
 [node name="Box4" parent="Entidades" instance=ExtResource( 2 )]
-position = Vector2( 383.283, 169.74 )
+position = Vector2( 418.283, 152.74 )
 
 [node name="Box1" parent="Entidades" instance=ExtResource( 2 )]
-position = Vector2( 385.006, 280.876 )
+position = Vector2( 361.349, 302.335 )
 
 [node name="Player" parent="Entidades" instance=ExtResource( 3 )]
-position = Vector2( 407.112, 222.721 )
+position = Vector2( 381.732, 223.634 )
+
+[node name="MainCamera" type="Camera2D" parent="Entidades/Player"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
 
 [node name="Gloom1" parent="Entidades" instance=ExtResource( 4 )]
-position = Vector2( 295.772, 304.65 )
+position = Vector2( 341.452, 253.806 )

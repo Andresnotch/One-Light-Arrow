@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Sprites/Animations/Enemies/Gloom/Idle/Front/Gloom_Front1.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Animations/Enemies/Gloom/Idle/Front/Gloom_Front3.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Animations/Enemies/Gloom/Idle/Front/Gloom_Front4.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Animations/Enemies/Gloom/Idle/Front/Gloom_Front2.png" type="Texture" id=4]
@@ -12,10 +11,10 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "IdleFront",
-"speed": 5.0
+"speed": 2.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -26,13 +25,14 @@ polygon = PoolVector2Array( -240.265, -35.9121, 255.052, -33.2267, 190.748, -331
 
 [node name="Node2D" type="KinematicBody2D"]
 light_mask = 8
+collision_layer = 3
+collision_mask = 3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 light_mask = 8
 position = Vector2( 1.46196, -1.92363 )
 frames = SubResource( 1 )
 animation = "IdleFront"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

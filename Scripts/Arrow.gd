@@ -2,22 +2,30 @@ extends RigidBody2D
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var flytime : int
+export var MAX_FLYTIME = 50
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	flytime = 0
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(_delta):
+	if flytime < MAX_FLYTIME:
+		flytime += 1
+	else:
+		linear_damp = -1
+		angular_damp = -1
+		$Area2D.monitorable = true
+	if linear_velocity.length() > 1:
+		$Sprite.look_at(position + linear_velocity)
+
+	pass
 
 
 
 func _on_Area2D_area_entered(_area):
-	print("arrow")
-	queue_free()
 	pass # Replace with function body.

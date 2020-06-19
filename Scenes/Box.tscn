@@ -10,8 +10,10 @@ polygon = PoolVector2Array( -22.4661, -10.8484, 22.4821, -10.6762, 22.5005, 22.5
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 24.0171, 17.8746 )
 
-[node name="Node2D" type="StaticBody2D"]
-light_mask = 0
+[node name="Body" type="StaticBody2D"]
+light_mask = 2
+collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite" type="Sprite" parent="."]
 light_mask = 2

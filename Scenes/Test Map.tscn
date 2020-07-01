@@ -14,7 +14,7 @@ gradient = SubResource( 1 )
 [node name="Mapa" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.027451, 0.027451, 0.027451, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 513.46, 300 )

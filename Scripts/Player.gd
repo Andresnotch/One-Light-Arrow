@@ -7,22 +7,27 @@ var arrow = preload("res://Scenes/Player/Arrow.tscn")
 var arrow_point = preload("res://Scenes/Player/ArrowPoint.tscn")
 
 func _process(_delta):
-	#Fire only if it has no arrows in tree
+	# Fire only if it has no arrows in tree
 	if Input.is_action_pressed("Fire") and !get_tree().root.has_node("Arrow"):
 		var arrow_instance = arrow.instance()
 		arrow_instance.position = position
-		arrow_instance.apply_impulse(Vector2(), get_local_mouse_position().normalized()*strenght)
+		arrow_instance.apply_impulse(Vector2(),
+				get_local_mouse_position().normalized()*strenght)
 		arrow_instance.name = "Arrow"
 		get_tree().root.add_child(arrow_instance)
 		#Turn off self light, shadow on and small light on
 		$ArrowLight.visible = false
 		$Shadow.visible = true
 		$SmallLight.visible = true
-	if get_tree().root.has_node("Arrow") and !get_tree().root.has_node("ArrowPoint"):
+	# When Arrow is on ground, instance the Arrowpoint
+	if (get_tree().root.has_node("Arrow") and
+			get_tree().root.get_node("Arrow").onground and
+			!get_tree().root.has_node("ArrowPoint")):
 		var arrow_point_instance = arrow_point.instance()
 		arrow_point_instance.position = position
 		arrow_point_instance.name = "ArrowPoint"
 		get_tree().root.add_child(arrow_point_instance)
+	# Arrowpoint looks at Arrow position
 	if get_tree().root.has_node("ArrowPoint"):
 		var ap = get_tree().root.get_node("ArrowPoint")
 		ap.position = position

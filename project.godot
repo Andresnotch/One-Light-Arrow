@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="One Light Arrow"
 run/main_scene="res://Scenes/Test Map.tscn"
-config/icon="res://icon.png"
+config/icon="res://icon.jpg"
 
 [display]
 
@@ -58,9 +58,14 @@ Fire={
 [layer_names]
 
 2d_render/layer_1="Background"
+2d_physics/layer_1="Map"
 2d_render/layer_2="Map"
+2d_physics/layer_2="Player"
 2d_render/layer_3="Player"
+2d_physics/layer_3="Enemies"
 2d_render/layer_4="Enemies"
+2d_physics/layer_4="Arrow"
+2d_physics/layer_5="Items"
 
 [physics]
 

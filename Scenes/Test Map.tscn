@@ -38,11 +38,7 @@ position = Vector2( 418.283, 152.74 )
 position = Vector2( 361.349, 302.335 )
 
 [node name="Player" parent="Entidades" instance=ExtResource( 3 )]
-<<<<<<< HEAD
 position = Vector2( 359.24, 226.469 )
-=======
-position = Vector2( 398.293, 215.686 )
->>>>>>> 8253cd66c8cb233b5775147dce25b3538362b03e
 
 [node name="MainCamera" type="Camera2D" parent="Entidades/Player"]
 current = true
@@ -51,8 +47,5 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="Gloom1" parent="Entidades" instance=ExtResource( 4 )]
-<<<<<<< HEAD
 position = Vector2( 543.385, 245.336 )
-=======
-position = Vector2( 252.216, 276.255 )
->>>>>>> 8253cd66c8cb233b5775147dce25b3538362b03e
+

@@ -25,7 +25,7 @@ extents = Vector2( 7.96306, 5.69187 )
 polygon = PoolVector2Array( -240.265, -35.9121, 255.052, -33.2267, 190.748, -331.306, -188.126, -328.62 )
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 107.007
+radius = 162.937
 
 [node name="Node2D" type="KinematicBody2D"]
 light_mask = 8
@@ -38,7 +38,7 @@ light_mask = 8
 position = Vector2( 1.46196, -1.92363 )
 frames = SubResource( 1 )
 animation = "IdleFront"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

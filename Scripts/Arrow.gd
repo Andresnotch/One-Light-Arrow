@@ -25,3 +25,4 @@ func _process(_delta):
 	if linear_velocity.length() > 1:
 		$Sprite.look_at(position + linear_velocity)
 	pass
+

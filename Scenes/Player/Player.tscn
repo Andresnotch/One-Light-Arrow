@@ -53,6 +53,7 @@ shape = SubResource( 2 )
 light_mask = 4
 frames = SubResource( 3 )
 animation = "PlayerFrontIdle"
+frame = 1
 playing = true
 
 [node name="Shadow" type="LightOccluder2D" parent="."]

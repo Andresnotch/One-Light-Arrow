@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Sprites/Animations/Player/Idle/Front/Idle Player Frame 1 (front).png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Animations/Player/Idle/Front/Idle Player Frame 2 (front).png" type="Texture" id=2]
@@ -28,10 +28,29 @@ animations = [ {
 [sub_resource type="OccluderPolygon2D" id=4]
 polygon = PoolVector2Array( -3.98341, 9.04047, -3.88689, 12.9333, -2.01067, 12.8918, -1.98163, 11.9917, -1.05228, 11.9739, -0.997375, 10.9578, 0.0508118, 10.8792, 0.0506687, 11.9526, 1.03807, 11.9337, 1.00703, 12.8647, 2.99802, 12.8368, 3.06435, 8.88761, 0.941772, 8.99243, 0.967978, 9.9358, -0.0278015, 10.0406, 0.0508118, 10.6171, -0.97117, 10.6957, -0.997375, 9.98821, -1.96695, 9.96201, -2.04556, 8.94002, -4.03712, 9.01864 )
 
-[node name="Node2D" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=5]
+radius = 10.0008
+
+[sub_resource type="Animation" id=6]
+resource_name = "Damage"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.945098, 0.0666667, 0.0666667, 1 ), Color( 1, 1, 1, 1 ), Color( 0.92549, 0, 0, 1 ), Color( 0.945098, 0.945098, 0.945098, 1 ), Color( 0.968627, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
 light_mask = 4
 collision_layer = 2
-collision_mask = 2
+collision_mask = 5
 script = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
@@ -39,13 +58,15 @@ light_mask = 4
 position = Vector2( 0, 6 )
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ArrowArea" type="Area2D" parent="."]
 light_mask = 4
 input_pickable = false
 gravity_vec = Vector2( 0, 0 )
 gravity = 0.0
+collision_layer = 0
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ArrowArea"]
 light_mask = 4
 shape = SubResource( 2 )
 
@@ -71,4 +92,16 @@ texture = ExtResource( 5 )
 texture_scale = 0.08
 energy = 0.8
 range_item_cull_mask = 31
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( 0, 5.875 )
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 6 )
+[connection signal="area_entered" from="ArrowArea" to="." method="_on_ArrowArea_area_entered"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]

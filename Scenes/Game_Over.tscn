@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/resident-evil-6-you-are-dead-screen.jpg" type="Texture" id=1]
+[ext_resource path="res://Scripts/Game_Over.gd" type="Script" id=2]
+
+[sub_resource type="ParticlesMaterial" id=1]
+lifetime_randomness = 0.25
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Game_Over" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 513.668, 299.666 )
+scale = Vector2( 1.6, 1.84615 )
+texture = ExtResource( 1 )
+
+[node name="Yes" type="Button" parent="."]
+margin_left = 839.0
+margin_top = 519.0
+margin_right = 892.0
+margin_bottom = 539.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="No" type="Button" parent="."]
+margin_left = 904.33
+margin_top = 518.333
+margin_right = 957.33
+margin_bottom = 538.333
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 756.153
+margin_top = 521.993
+margin_right = 939.153
+margin_bottom = 535.993
+text = "Continue?...      Yes           No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Particles2D" type="Particles2D" parent="."]
+process_material = SubResource( 1 )

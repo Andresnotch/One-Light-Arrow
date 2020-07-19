@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Gloom.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Animations/Enemies/Gloom/Idle/Front/Gloom_Front3.png" type="Texture" id=2]
@@ -27,9 +27,15 @@ polygon = PoolVector2Array( -240.265, -35.9121, 255.052, -33.2267, 190.748, -331
 [sub_resource type="CircleShape2D" id=4]
 radius = 162.937
 
-[node name="Node2D" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8.8453, 11.8839 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 16.3781
+
+[node name="Gloom" type="KinematicBody2D"]
 light_mask = 8
-collision_layer = 3
+collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
 
@@ -38,7 +44,7 @@ light_mask = 8
 position = Vector2( 1.46196, -1.92363 )
 frames = SubResource( 1 )
 animation = "IdleFront"
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -57,9 +63,32 @@ scale = Vector2( 0.0309178, 0.0200096 )
 occluder = SubResource( 3 )
 light_mask = 23
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2
+[node name="VisionArea" type="Area2D" parent="."]
+collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionArea"]
 shape = SubResource( 4 )
+
+[node name="Attack_area" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_area"]
+position = Vector2( -7.62939e-06, 1.06187 )
+shape = SubResource( 5 )
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( 0, 0.889124 )
+shape = SubResource( 6 )
+
+[node name="LookDirection" type="RayCast2D" parent="."]
+enabled = true
+collision_mask = 3
+[connection signal="body_entered" from="VisionArea" to="." method="_on_VisionArea_body_entered"]
+[connection signal="body_exited" from="VisionArea" to="." method="_on_VisionArea_body_exited"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_DamageArea_area_entered"]

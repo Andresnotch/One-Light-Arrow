@@ -1,14 +1,18 @@
 extends KinematicBody2D
 
 export var player_speed = 200 # Pixels/second
-export var strenght = 1000
+export var strenght = 300
+export var progress = 0
+export var life = 100
 
 var arrow = preload("res://Scenes/Player/Arrow.tscn")
 var arrow_point = preload("res://Scenes/Player/ArrowPoint.tscn")
+var noshot = 0
 
 func _process(_delta):
+	if noshot < 10: noshot += 1
 	# Fire only if it has no arrows in tree
-	if Input.is_action_pressed("Fire") and !get_tree().root.has_node("Arrow"):
+	if Input.is_action_pressed("Fire") and !get_tree().root.has_node("Arrow") and (noshot == 10):
 		var arrow_instance = arrow.instance()
 		arrow_instance.position = position
 		arrow_instance.apply_impulse(Vector2(),
@@ -32,6 +36,12 @@ func _process(_delta):
 		var ap = get_tree().root.get_node("ArrowPoint")
 		ap.position = position
 		ap.look_at(get_tree().root.get_node("Arrow").position)
+		
+	#Death	
+	if (life <= 0):
+		GlobalVars.current_scene = get_tree().current_scene.filename
+		get_tree().change_scene("res://Scenes/Game_Over.tscn") 
+		
 	pass
 
 func _physics_process(_delta):
@@ -47,17 +57,24 @@ func _physics_process(_delta):
 		motion += Vector2(1, 0)
 	
 	motion = motion.normalized() * player_speed
-
 	move_and_slide(motion)
 
 
-
-func _on_Area2D_area_entered(_area):
+func _on_ArrowArea_area_entered(_area):
 	$SmallLight.visible = false
 	$ArrowLight.visible = true
 	$Shadow.visible = false
 	if get_tree().root.has_node("ArrowPoint"):
 		get_tree().root.get_node("ArrowPoint").queue_free()
 		get_tree().root.get_node("Arrow").queue_free()
-		
 	pass
+
+
+func _on_DamageArea_area_entered(_area):
+	#Solo daña si no se está procesando un daño anterior
+	if !$AnimationPlayer.is_playing():
+		$AnimationPlayer.play("Damage")
+		life-=25
+		print(life)
+	pass # Replace with function body.
+	

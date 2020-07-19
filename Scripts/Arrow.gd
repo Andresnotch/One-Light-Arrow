@@ -20,7 +20,7 @@ func _process(_delta):
 	else:
 		linear_damp = -1
 		angular_damp = -1
-		$Area2D.monitorable = true
+		$PickupArea.monitorable = true
 		onground = true
 	if linear_velocity.length() > 1:
 		$Sprite.look_at(position + linear_velocity)

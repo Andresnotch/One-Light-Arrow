@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="One Light Arrow"
-run/main_scene="res://Scenes/Test Map.tscn"
+run/main_scene="res://Scenes/Levels/Tutorial.tscn"
 config/icon="res://icon.jpg"
+
+[autoload]
+
+GlobalVars="*res://Scripts/GlobalVars.gd"
 
 [display]
 
@@ -65,7 +69,10 @@ Fire={
 2d_physics/layer_3="Enemies"
 2d_render/layer_4="Enemies"
 2d_physics/layer_4="Arrow"
+2d_render/layer_5="Walls"
 2d_physics/layer_5="Items"
+2d_physics/layer_6="EnemyHurtBox"
+2d_physics/layer_7="PlayerHurtbox"
 
 [physics]
 

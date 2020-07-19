@@ -16,7 +16,7 @@ gradient = SubResource( 1 )
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Background" type="Sprite" parent="."]
 position = Vector2( 513.46, 300 )
 scale = Vector2( 0.5, 600 )
 texture = SubResource( 2 )
@@ -38,7 +38,7 @@ position = Vector2( 418.283, 152.74 )
 position = Vector2( 361.349, 302.335 )
 
 [node name="Player" parent="Entidades" instance=ExtResource( 3 )]
-position = Vector2( 359.24, 226.469 )
+position = Vector2( 68.6392, 52.1674 )
 
 [node name="MainCamera" type="Camera2D" parent="Entidades/Player"]
 current = true
@@ -47,5 +47,4 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="Gloom1" parent="Entidades" instance=ExtResource( 4 )]
-position = Vector2( 543.385, 245.336 )
-
+position = Vector2( 408.302, 67.2765 )

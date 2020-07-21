@@ -59,6 +59,7 @@ position = Vector2( 0, 6 )
 shape = SubResource( 1 )
 
 [node name="ArrowArea" type="Area2D" parent="."]
+visible = false
 light_mask = 4
 input_pickable = false
 gravity_vec = Vector2( 0, 0 )

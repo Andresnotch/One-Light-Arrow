@@ -37,13 +37,13 @@ polygon = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 [sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=9]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 32, 23.2701, 0, 23.2701, 0, 0, 32, 0 )
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 23.5931, 0, 23.4316 )
 
-[sub_resource type="TileSet" id=8]
+[sub_resource type="TileSet" id=10]
 0/name = "box1.png 0"
 0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
@@ -147,14 +147,14 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 23.5931, 0, 23.4316 )
 5/navigation_offset = Vector2( 0, 0 )
 5/shape_offset = Vector2( 0, 0 )
 5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 9 )
+5/shape = SubResource( 8 )
 5/shape_one_way = false
 5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 9 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 5/z_index = 0
@@ -168,14 +168,14 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 23.5931, 0, 23.4316 )
 6/navigation_offset = Vector2( 0, 0 )
 6/shape_offset = Vector2( 0, 0 )
 6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 10 )
+6/shape = SubResource( 9 )
 6/shape_one_way = false
 6/shape_one_way_margin = 1.0
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 10 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 6/z_index = 0
@@ -221,7 +221,7 @@ texture = SubResource( 2 )
 [node name="Map" type="TileMap" parent="."]
 light_mask = 16
 scale = Vector2( 0.5, 0.5 )
-tile_set = SubResource( 8 )
+tile_set = SubResource( 10 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 cell_y_sort = true
@@ -238,17 +238,39 @@ format = 1
 tile_data = PoolIntArray( 5, 0, 0, 65550, 0, 0, 65559, 0, 0, 65568, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 47.4264, 157.332 )
+position = Vector2( 101.237, 149.899 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
 zoom = Vector2( 0.5, 0.5 )
 
-[node name="Gloom1" parent="." instance=ExtResource( 2 )]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Gloom1" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 404.492, 106.997 )
 
-[node name="Node2D" parent="." instance=ExtResource( 13 )]
+[node name="Gloom" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 314.873, 181.002 )
+
+[node name="Gloom2" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 515.771, 67.3477 )
+
+[node name="Gloom3" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 387.811, 387.249 )
+
+[node name="Gloom4" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 81.3785, 293.524 )
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Light" parent="Node2D" instance=ExtResource( 13 )]
 position = Vector2( 231.532, 22.8143 )
 
-[node name="Node2D2" parent="." instance=ExtResource( 13 )]
+[node name="Light2" parent="Node2D" instance=ExtResource( 13 )]
 position = Vector2( 87.5323, 7.31434 )
+
+[node name="BlueTorchLight" parent="Node2D" instance=ExtResource( 13 )]
+position = Vector2( 375.5, 23.5 )
+
+[node name="BlueTorchLight2" parent="Node2D" instance=ExtResource( 13 )]
+position = Vector2( 520, 24.5 )

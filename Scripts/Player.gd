@@ -1,28 +1,41 @@
 extends KinematicBody2D
 
 export var player_speed = 200 # Pixels/second
-export var strenght = 300
 export var progress = 0
-export var life = 100
+export var life = 0
 
 var arrow = preload("res://Scenes/Player/Arrow.tscn")
 var arrow_point = preload("res://Scenes/Player/ArrowPoint.tscn")
-var noshot = 0
+
+func _ready():
+	life = GlobalVars.playerLife
+	GlobalVars.playerShootingTime = 0
 
 func _process(_delta):
-	if noshot < 10: noshot += 1
+	#Shoot force accumulates over time
+	if Input.is_action_pressed("Fire") and !get_tree().root.has_node("Arrow"):
+		if GlobalVars.playerShootingTime < 100: GlobalVars.playerShootingTime += 1
+	elif Input.is_action_just_released("Fire"):
+		pass
+	else:
+		if GlobalVars.playerShootingTime > 0:
+			GlobalVars.playerShootingTime = 0
+			
+			
 	# Fire only if it has no arrows in tree
-	if Input.is_action_pressed("Fire") and !get_tree().root.has_node("Arrow") and (noshot == 10):
-		var arrow_instance = arrow.instance()
-		arrow_instance.position = position
-		arrow_instance.apply_impulse(Vector2(),
-				get_local_mouse_position().normalized()*strenght)
-		arrow_instance.name = "Arrow"
-		get_tree().root.add_child(arrow_instance)
+	if Input.is_action_just_released("Fire") and !get_tree().root.has_node("Arrow") and (GlobalVars.playerShootingTime > 10):
+		print(GlobalVars.playerShootingTime)
 		#Turn off self light, shadow on and small light on
 		$ArrowLight.visible = false
 		$Shadow.visible = true
 		$SmallLight.visible = true
+		var arrow_instance = arrow.instance()
+		arrow_instance.position = position
+		arrow_instance.apply_impulse(Vector2(),
+				get_local_mouse_position().normalized() *
+				GlobalVars.playerStrenght / 100 * GlobalVars.playerShootingTime)
+		arrow_instance.name = "Arrow"
+		get_tree().root.add_child(arrow_instance)
 	# When Arrow is on ground, instance the Arrowpoint
 	if (get_tree().root.has_node("Arrow") and
 			get_tree().root.get_node("Arrow").onground and
@@ -74,7 +87,8 @@ func _on_DamageArea_area_entered(_area):
 	#Solo daña si no se está procesando un daño anterior
 	if !$AnimationPlayer.is_playing():
 		$AnimationPlayer.play("Damage")
-		life-=25
+		GlobalVars.playerLife -= 25
+		life = GlobalVars.playerLife
 		print(life)
 	pass # Replace with function body.
 	

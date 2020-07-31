@@ -28,9 +28,12 @@ angular_damp = 0.0
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+light_mask = 15
+scale = Vector2( 1.20319, 1.20319 )
 texture = ExtResource( 2 )
 
 [node name="Light" parent="." instance=ExtResource( 1 )]
+position = Vector2( 7.61665, -0.0196543 )
 
 [node name="PickupArea" type="Area2D" parent="."]
 position = Vector2( 0, -0.122087 )

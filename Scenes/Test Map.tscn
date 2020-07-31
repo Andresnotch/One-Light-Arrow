@@ -4,12 +4,12 @@
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Enemies/Gloom.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0.502994 )
 colors = PoolColorArray( 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
 [node name="Mapa" type="Node2D"]
 
@@ -19,7 +19,7 @@ color = Color( 0, 0, 0, 1 )
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 513.46, 300 )
 scale = Vector2( 0.5, 600 )
-texture = SubResource( 2 )
+texture = SubResource( 3 )
 
 [node name="Entidades" type="YSort" parent="."]
 position = Vector2( -1, 0 )
@@ -38,7 +38,7 @@ position = Vector2( 418.283, 152.74 )
 position = Vector2( 361.349, 302.335 )
 
 [node name="Player" parent="Entidades" instance=ExtResource( 3 )]
-position = Vector2( 68.6392, 52.1674 )
+position = Vector2( 239.465, 204.229 )
 
 [node name="MainCamera" type="Camera2D" parent="Entidades/Player"]
 current = true
@@ -46,5 +46,8 @@ zoom = Vector2( 0.5, 0.5 )
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
-[node name="Gloom1" parent="Entidades" instance=ExtResource( 4 )]
-position = Vector2( 408.302, 67.2765 )
+[node name="Node2D" type="Node2D" parent="Entidades"]
+position = Vector2( 1, 0 )
+
+[node name="Gloom1" parent="Entidades/Node2D" instance=ExtResource( 4 )]
+position = Vector2( 407.302, 67.2765 )

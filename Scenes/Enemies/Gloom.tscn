@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Gloom.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Animations/Enemies/Gloom/Idle/Front/Gloom_Front3.png" type="Texture" id=2]
@@ -18,11 +18,9 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7.96306, 5.69187 )
-
-[sub_resource type="OccluderPolygon2D" id=3]
-polygon = PoolVector2Array( -240.265, -35.9121, 255.052, -33.2267, 190.748, -331.306, -188.126, -328.62 )
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 9.56512
+height = 6.51568
 
 [sub_resource type="CircleShape2D" id=4]
 radius = 162.937
@@ -40,29 +38,22 @@ collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1, 1, 0.501961 )
 light_mask = 8
 position = Vector2( 1.46196, -1.92363 )
 frames = SubResource( 1 )
 animation = "IdleFront"
-frame = 1
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 light_mask = 8
-position = Vector2( 0, 6.91038 )
+position = Vector2( 0, 2.375 )
 shape = SubResource( 2 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 light_mask = 8
-
-[node name="Shadow" type="LightOccluder2D" parent="."]
-show_behind_parent = true
-light_mask = 23
-position = Vector2( -0.274845, 13.1437 )
-scale = Vector2( 0.0309178, 0.0200096 )
-occluder = SubResource( 3 )
-light_mask = 23
 
 [node name="VisionArea" type="Area2D" parent="."]
 visible = false

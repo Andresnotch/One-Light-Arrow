@@ -7,7 +7,6 @@
 [ext_resource path="res://Tiles/Animated/pixil-frame-2.png" type="Texture" id=5]
 [ext_resource path="res://Tiles/Animated/pixil-frame-0.png" type="Texture" id=6]
 
-
 [resource]
 frames = 6
 fps = 5.0

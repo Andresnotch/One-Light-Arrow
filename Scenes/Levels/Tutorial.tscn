@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/Gloom.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Sprites/Map/bricksmallcorner.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Light/BlueTorchLight.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Tiles/Floor.tres" type="TileSet" id=14]
+[ext_resource path="res://Scenes/Player/Arrow.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -62,7 +63,7 @@ points = PoolVector2Array( 32, 23.2701, 0, 23.2701, 0, 0, 32, 0 )
 [sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 28.6267, 32, 28.223, 3.45879, 0, 3.72797 )
 
-[sub_resource type="TileSet" id=11]
+[sub_resource type="TileSet" id=10]
 0/name = "box1.png 0"
 0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
@@ -240,7 +241,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 28.6267, 32, 28.223, 3.45879, 0,
 environment = SubResource( 1 )
 
 [node name="Shadow" type="CanvasModulate" parent="."]
-color = Color( 0.556863, 0.556863, 0.556863, 1 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Floor" type="TileMap" parent="."]
 scale = Vector2( 0.5, 0.5 )
@@ -338,7 +339,7 @@ position = Vector2( 520, 24.5 )
 [node name="Map" type="TileMap" parent="Entities"]
 light_mask = 16
 scale = Vector2( 0.5, 0.5 )
-tile_set = SubResource( 11 )
+tile_set = SubResource( 10 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 cell_tile_origin = 1
@@ -496,3 +497,6 @@ cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
 format = 1
 tile_data = PoolIntArray( 5, 0, 0, 65550, 0, 0, 65559, 0, 0, 65568, 0, 0, 65576, 0, 0, 65590, 0, 0, 65609, 0, 0, 65624, 0, 0, 65635, 0, 0, 524335, 0, 0, 786515, 0, 0, 917508, 0, 0, 983102, 0, 0, 1310738, 0, 0, 1310747, 0, 0, 1507396, 0, 0, 1507403, 0, 0, 1900589, 0, 0, 1900593, 0, 0, 2097219, 0, 0, 2490423, 0, 0, 2490433, 0, 0, 3211273, 0, 0, 3211289, 0, 0, 3473504, 0, 0, 3538984, 0, 0, 3538997, 0, 0, 3539023, 0, 0 )
+
+[node name="Body" parent="." instance=ExtResource( 15 )]
+position = Vector2( 223.602, 221.388 )
